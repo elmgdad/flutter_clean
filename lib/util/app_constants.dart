@@ -1,4 +1,3 @@
-import 'package:get/get.dart';
 import 'package:six_cash/data/model/response/language_model.dart';
 import 'package:six_cash/data/model/response/on_boarding_model.dart';
 

@@ -5,7 +5,6 @@ import 'package:six_cash/controller/home_controller.dart';
 import 'package:six_cash/controller/menu_controller.dart';
 import 'package:six_cash/controller/profile_screen_controller.dart';
 import 'package:six_cash/controller/splash_controller.dart';
-import 'package:six_cash/helper/transaction_type.dart';
 import 'package:six_cash/util/dimensions.dart';
 import 'package:six_cash/util/images.dart';
 import 'package:six_cash/view/base/custom_image.dart';

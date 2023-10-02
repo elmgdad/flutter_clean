@@ -8,8 +8,7 @@ import 'package:six_cash/util/dimensions.dart';
 import 'package:six_cash/util/images.dart';
 import 'package:six_cash/view/base/animated_custom_dialog.dart';
 import 'package:six_cash/view/base/logout_dialog.dart';
-import 'package:six_cash/view/screens/auth/selfie_capture/camera_screen.dart';
-import 'package:six_cash/view/screens/deshboard/widget/unicorn_outline_button.dart';
+
 import 'package:six_cash/view/screens/splash/splash_screen.dart';
 
 class NavBarScreen extends StatefulWidget {

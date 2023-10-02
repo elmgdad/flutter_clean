@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:six_cash/data/api/api_checker.dart';
 import 'package:six_cash/data/model/response/config_model.dart';
 import 'package:six_cash/data/repository/splash_repo.dart';
