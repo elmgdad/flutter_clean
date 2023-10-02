@@ -29,11 +29,6 @@ class ConfigModel {
     this.themeIndex,
     this.activePaymentMethodList,
     this.otpResendTime,
-    this.customerAddMoneyLimit,
-    this.customerCashOutLimit,
-    this.customerSendMoneyLimit,
-    this.customerWithdrawLimit,
-    this.customerRequestMoneyLimit,
     this.systemFeature,
   });
 
@@ -58,11 +53,7 @@ class ConfigModel {
   int? themeIndex;
   List<String>? activePaymentMethodList;
   int? otpResendTime;
-  CustomerLimit? customerSendMoneyLimit;
-  CustomerLimit? customerAddMoneyLimit;
-  CustomerLimit? customerRequestMoneyLimit;
-  CustomerLimit? customerWithdrawLimit;
-  CustomerLimit? customerCashOutLimit;
+
   SystemFeature? systemFeature;
 
   factory ConfigModel.fromJson(Map<String, dynamic> json) => ConfigModel(
@@ -87,11 +78,6 @@ class ConfigModel {
         themeIndex: int.tryParse('${json["user_app_theme"]}'),
         activePaymentMethodList: json['active_payment_method_list'].cast<String>(),
         otpResendTime: int.tryParse('${json['otp_resend_time']}'),
-        customerSendMoneyLimit: CustomerLimit.fromJson(json['customer_send_money_limit']),
-        customerAddMoneyLimit: CustomerLimit.fromJson(json['customer_add_money_limit']),
-        customerRequestMoneyLimit: CustomerLimit.fromJson(json['customer_send_money_request_limit']),
-        customerWithdrawLimit: CustomerLimit.fromJson(json['customer_withdraw_request_limit']),
-        customerCashOutLimit: CustomerLimit.fromJson(json['customer_cash_out_limit']),
         systemFeature: SystemFeature.fromJson(json['system_feature']),
       );
 }

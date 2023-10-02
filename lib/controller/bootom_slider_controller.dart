@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:get/get.dart';
-import 'package:six_cash/data/model/body/transaction_body.dart';
+
 import 'package:six_cash/helper/route_helper.dart';
 
 class BottomSliderController extends GetxController implements GetxService {
@@ -13,9 +13,9 @@ class BottomSliderController extends GetxController implements GetxService {
   bool _isNextButtonLoading = false;
   bool _isOtpSheet = false;
   int _statusCode = 200;
-  bool isPinVerified= false;
+  bool isPinVerified = false;
   String? _pin;
-  TransactionBody? _transactionBody;
+  // TransactionBody? _transactionBody;
   String? _newBalance; //todo: profile data balance
   Response? response;
 
@@ -27,104 +27,103 @@ class BottomSliderController extends GetxController implements GetxService {
   bool get isLoading => _isLoading;
   bool get isNextButtonLoading => _isNextButtonLoading;
   bool get isOtpSheet => _isOtpSheet;
-  TransactionBody? get transactionBody => _transactionBody;
+  // TransactionBody? get transactionBody => _transactionBody;
   String? get newBalance => _newBalance;
   int get statusCode => _statusCode;
 
   String? get pin => _pin;
 
-  set setTransactionBody(TransactionBody transactionBody){
-    _transactionBody = transactionBody;
-    update();
-  }
-  set setNewBalance(String setBalance){
+  // set setTransactionBody(TransactionBody transactionBody){
+  //   _transactionBody = transactionBody;
+  //   update();
+  // }
+  set setNewBalance(String setBalance) {
     _newBalance = setBalance;
   }
-  set setResponse(Response getResponse){
+
+  set setResponse(Response getResponse) {
     response = getResponse;
   }
-  set setIsLoading(bool value){
-    _isLoading =  value;
-    update();
-  }
-  set setStatusCode(int value){
-    _statusCode =  value;
-    update();
-  }
-  set setIsNextButtonLoading(bool value){
-    _isNextButtonLoading =  value;
-    update();
-  }
-  set setIsNextButtonSheet(bool value){
-    _isNextBottomSheet =  value;
+
+  set setIsLoading(bool value) {
+    _isLoading = value;
     update();
   }
 
-  void setIsPinCompleted({required bool isCompleted, required bool isNotify}){
-    _isPinCompleted =  isCompleted;
-    if(isNotify) {
+  set setStatusCode(int value) {
+    _statusCode = value;
+    update();
+  }
+
+  set setIsNextButtonLoading(bool value) {
+    _isNextButtonLoading = value;
+    update();
+  }
+
+  set setIsNextButtonSheet(bool value) {
+    _isNextBottomSheet = value;
+    update();
+  }
+
+  void setIsPinCompleted({required bool isCompleted, required bool isNotify}) {
+    _isPinCompleted = isCompleted;
+    if (isNotify) {
       update();
     }
   }
 
-
-
   changeFloatingActionButtonFun(bool state) {
     _isFloatingActionButton = state;
     update();
-
   }
+
   changeIsNextBottomSheetFun() {
     _isNextBottomSheet = !_isNextBottomSheet;
     update();
-
   }
-  changeBottomSheetToOtp(){
+
+  changeBottomSheetToOtp() {
     _isOtpSheet = true;
     update();
-
   }
 
-  changePinComleted(String value){
-    if (value.length==4) {
+  changePinComleted(String value) {
+    if (value.length == 4) {
       _isPinCompleted = true;
       _pin = value;
-
-    }else{
+    } else {
       _isPinCompleted = false;
-
     }
 
     update();
   }
 
-  isStopFun(){
+  isStopFun() {
     _isStop = !_isStop;
   }
-  resetPinField(){
+
+  resetPinField() {
     _pin = '';
     _isPinCompleted = false;
     update();
     Get.back(closeOverlays: true);
   }
 
-  changeAlignmentValue(){
+  changeAlignmentValue() {
     if (_isStop) {
-      Future.delayed(const Duration(seconds: 1)).then((value){
+      Future.delayed(const Duration(seconds: 1)).then((value) {
         _alinmentRightIndicator = !_alinmentRightIndicator;
         log(alinmentRightIndicator.toString());
         update();
         changeAlignmentValue();
       });
-
     }
   }
 
-  void goBackButton(){
+  void goBackButton() {
     // Get.find<ProfileController>().setUserInfo = null;
     changeIsNextBottomSheetFun();
     _isPinCompleted = false;
-    Get.offAllNamed(RouteHelper.getNavBarRoute(), arguments:  true);
+    Get.offAllNamed(RouteHelper.getNavBarRoute(), arguments: true);
   }
-
 }

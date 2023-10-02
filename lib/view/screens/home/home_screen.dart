@@ -1,23 +1,9 @@
-import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:six_cash/controller/banner_controller.dart';
 import 'package:six_cash/controller/home_controller.dart';
-import 'package:six_cash/controller/notification_controller.dart';
 import 'package:six_cash/controller/profile_screen_controller.dart';
-import 'package:six_cash/controller/requested_money_controller.dart';
 import 'package:six_cash/controller/splash_controller.dart';
-import 'package:six_cash/controller/transaction_controller.dart';
-import 'package:six_cash/controller/transaction_history_controller.dart';
-import 'package:six_cash/controller/websitelink_controller.dart';
-import 'package:six_cash/util/dimensions.dart';
 import 'package:six_cash/view/screens/home/widget/app_bar_base.dart';
-import 'package:six_cash/view/screens/home/widget/bottom_sheet/expandable_content.dart';
-import 'package:six_cash/view/screens/home/widget/bottom_sheet/persistent_header.dart';
-import 'package:six_cash/view/screens/home/widget/first_card_portion.dart';
-import 'package:six_cash/view/screens/home/widget/linked_website.dart';
-import 'package:six_cash/view/screens/home/widget/secend_card_portion.dart';
-import 'package:six_cash/view/screens/home/widget/third_card_portion.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

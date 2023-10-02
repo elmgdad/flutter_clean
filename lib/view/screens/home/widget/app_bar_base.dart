@@ -14,8 +14,6 @@ import 'package:six_cash/view/screens/home/widget/animated_card/hero_dialogue_ro
 import 'package:six_cash/view/screens/home/widget/animated_card/qr_popup_card.dart';
 import 'package:six_cash/view/screens/home/widget/show_balance.dart';
 import 'package:six_cash/view/screens/home/widget/show_name.dart';
-import 'package:six_cash/view/screens/transaction_money/transaction_money_balance_input.dart';
-import 'package:six_cash/view/screens/transaction_money/widget/animated_button.dart';
 
 class AppBarBase extends StatelessWidget implements PreferredSizeWidget {
   const AppBarBase({Key? key}) : super(key: key);

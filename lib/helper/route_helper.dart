@@ -12,7 +12,6 @@ import 'package:six_cash/view/screens/auth/varification/varification_screen.dart
 import 'package:six_cash/view/screens/deshboard/nav_bar_screen.dart';
 import 'package:six_cash/view/screens/forget_password/widget/forget_password.dart';
 import 'package:six_cash/view/screens/forget_password/widget/reset_password_screen.dart';
-import 'package:six_cash/view/screens/history/history_screen.dart';
 import 'package:six_cash/view/screens/home/home_screen.dart';
 import 'package:six_cash/view/screens/more/change_language_screen.dart';
 import 'package:six_cash/view/screens/notification/notification_screen.dart';
@@ -25,10 +24,7 @@ import 'package:six_cash/view/screens/profile/widget/html_view_screen.dart';
 import 'package:six_cash/view/screens/profile/widget/qr_code_download_or_share.dart';
 import 'package:six_cash/view/screens/profile/widget/support_screen.dart';
 import 'package:six_cash/view/screens/splash/splash_screen.dart';
-import 'package:six_cash/view/screens/transaction_money/transaction_money_balance_input.dart';
-import 'package:six_cash/view/screens/transaction_money/transaction_money_confirmation.dart';
-import 'package:six_cash/view/screens/transaction_money/transaction_money_screen.dart';
-import 'package:six_cash/view/screens/transaction_money/widget/share_statement_widget.dart';
+
 import 'package:six_cash/view/screens/welcome_screen/welcome_screen.dart';
 
 class RouteHelper {
@@ -57,7 +53,6 @@ class RouteHelper {
 
   static const String qrCodeScannerScreen = '/qr_code_scanner_screen';
   static const String showWebViewScreen = '/show_web_view_screen';
-
 
   static const String sendMoneyBalanceInput = '/send_money_balance_inputsend_money_balance_input';
   static const String sendMoneyConfirmation = '/transaction_money_confirmation.dart';
@@ -89,47 +84,51 @@ class RouteHelper {
   static getSplashRoute() => splash;
   static String getHomeRoute(String name) => '$home?name=$name';
 
-  static  getLoginRoute({required String? countryCode, required String? phoneNumber}) {
+  static getLoginRoute({required String? countryCode, required String? phoneNumber}) {
     return '$loginScreen?country-code=$countryCode&phone-number=$phoneNumber';
   }
-  static  getRegistrationRoute() => createAccountScreen;
-  static  getVerifyRoute({String? phoneNumber}) => '$verifyScreen?phone_number=${Uri.encodeComponent(phoneNumber ?? 'null')}';
 
-  static  getWelcomeRoute({String? countryCode,String? phoneNumber, String? password}) {
+  static getRegistrationRoute() => createAccountScreen;
+  static getVerifyRoute({String? phoneNumber}) => '$verifyScreen?phone_number=${Uri.encodeComponent(phoneNumber ?? 'null')}';
+
+  static getWelcomeRoute({String? countryCode, String? phoneNumber, String? password}) {
     return '$welcomeScreen?country-code=$countryCode&phone-number=$phoneNumber&password=$password';
   }
-  static  getSelfieRoute({required bool fromEditProfile}) => '$selfieScreen?page=${fromEditProfile?'edit-profile':'verify'}';
-  static  getNavBarRoute() => navbar;
-  static  getOtherInformationRoute() => otherInfoScreen;
-  static  getPinSetRoute({required SignUpBody signUpBody}) {
-    String signUpData =  base64Url.encode(utf8.encode(jsonEncode(signUpBody.toJson())));
+
+  static getSelfieRoute({required bool fromEditProfile}) => '$selfieScreen?page=${fromEditProfile ? 'edit-profile' : 'verify'}';
+  static getNavBarRoute() => navbar;
+  static getOtherInformationRoute() => otherInfoScreen;
+  static getPinSetRoute({required SignUpBody signUpBody}) {
+    String signUpData = base64Url.encode(utf8.encode(jsonEncode(signUpBody.toJson())));
     return '$pinSetScreen?signup=$signUpData';
   }
-  static  getRequestMoneyRoute({String? phoneNumber,required bool fromEdit}) => '$requestMoney?phone-number=$phoneNumber&from-edit=${fromEdit?'edit-number':'home'}';
-  static  getForgetPassRoute({required String? countryCode, required String phoneNumber}) => '$fPhoneNumberScreen?country-code=$countryCode&phone-number=$phoneNumber';
-  static  getRequestMoneyBalanceInputRoute() => requestMoneyBalanceInput;
-  static  getRequestMoneyConfirmationRoute({required String inputBalanceText}) => '$requestMoneyConfirmation?input-balance=$inputBalanceText';
-  static  getNoInternetRoute() => noInternetScreen;
-  static  getChoseLoginRegRoute() => choseLoginOrRegScreen;
-  static  getSendMoneyRoute({String? phoneNumber,required bool fromEdit}) => '$sendMoney?phone-number=$phoneNumber&from-edit=${fromEdit?'edit-number':'home'}';
-  static  getSendMoneyInputRoute({required String transactionType}) => '$sendMoneyBalanceInput?transaction-type=$transactionType';
-  static  getSendMoneyConfirmationRoute({required String inputBalanceText,required String transactionType}) => '$sendMoneyConfirmation?input-balance=$inputBalanceText&transaction-type=$transactionType';
-  static  getChoseLanguageRoute() => choseLanguageScreen;
-  static  getCashOutScreenRoute({String? phoneNumber,required bool fromEdit}) => '$cashOut?phone-number=$phoneNumber&from-edit=${fromEdit?'edit-number':'home'}';
-  static  getCashOutBalanceInputRoute() => cashOutBalanceInput;
-  static  getFResetPassRoute({String? phoneNumber, String? otp}) => '$resetPassScreen?phone-number=$phoneNumber&otp=$otp';
-  static  getEditProfileRoute() => editProfileScreen;
-  static  getChangePinRoute() => changePinScreen;
-  static  getAddMoneyInputRoute() => addMoneyInput;
+
+  static getRequestMoneyRoute({String? phoneNumber, required bool fromEdit}) => '$requestMoney?phone-number=$phoneNumber&from-edit=${fromEdit ? 'edit-number' : 'home'}';
+  static getForgetPassRoute({required String? countryCode, required String phoneNumber}) => '$fPhoneNumberScreen?country-code=$countryCode&phone-number=$phoneNumber';
+  static getRequestMoneyBalanceInputRoute() => requestMoneyBalanceInput;
+  static getRequestMoneyConfirmationRoute({required String inputBalanceText}) => '$requestMoneyConfirmation?input-balance=$inputBalanceText';
+  static getNoInternetRoute() => noInternetScreen;
+  static getChoseLoginRegRoute() => choseLoginOrRegScreen;
+  static getSendMoneyRoute({String? phoneNumber, required bool fromEdit}) => '$sendMoney?phone-number=$phoneNumber&from-edit=${fromEdit ? 'edit-number' : 'home'}';
+  static getSendMoneyInputRoute({required String transactionType}) => '$sendMoneyBalanceInput?transaction-type=$transactionType';
+  static getSendMoneyConfirmationRoute({required String inputBalanceText, required String transactionType}) => '$sendMoneyConfirmation?input-balance=$inputBalanceText&transaction-type=$transactionType';
+  static getChoseLanguageRoute() => choseLanguageScreen;
+  static getCashOutScreenRoute({String? phoneNumber, required bool fromEdit}) => '$cashOut?phone-number=$phoneNumber&from-edit=${fromEdit ? 'edit-number' : 'home'}';
+  static getCashOutBalanceInputRoute() => cashOutBalanceInput;
+  static getFResetPassRoute({String? phoneNumber, String? otp}) => '$resetPassScreen?phone-number=$phoneNumber&otp=$otp';
+  static getEditProfileRoute() => editProfileScreen;
+  static getChangePinRoute() => changePinScreen;
+  static getAddMoneyInputRoute() => addMoneyInput;
   // static  getFVerificationRoute({required String phoneNumber}) => '$fVerificationScreen?phone-number=$phoneNumber';
 
   static getSupportRoute() => support;
   static getCashOutConfirmationRoute({required String inputBalanceText}) => '$cashOutConfirmation?input-balance=$inputBalanceText';
-  static  getShareStatementRoute({ required String amount,  required String transactionType, required ContactModel contactModel}) {
-    String data =  base64Url.encode(utf8.encode(jsonEncode(contactModel.toJson())));
+  static getShareStatementRoute({required String amount, required String transactionType, required ContactModel contactModel}) {
+    String data = base64Url.encode(utf8.encode(jsonEncode(contactModel.toJson())));
     String transactionType0 = base64Url.encode(utf8.encode(transactionType));
     return '$shareStatement?amount=$amount&transaction-type=$transactionType0&contact=$data';
   }
+
   static getQrCodeDownloadOrShareRoute({required String qrCode, required String phoneNumber}) {
     String qrCode0 = base64Url.encode(utf8.encode(qrCode));
     String phoneNumber0 = base64Url.encode(utf8.encode(phoneNumber));
@@ -137,53 +136,58 @@ class RouteHelper {
     return '$qrCodeDownloadOrShare?qr-code=$qrCode0&phone-number=$phoneNumber0';
   }
 
-
   static List<GetPage> routes = [
     GetPage(name: splash, page: () => const SplashScreen()),
     GetPage(name: home, page: () => const HomeScreen()),
     GetPage(name: navbar, page: () => const NavBarScreen()),
-    GetPage(name: shareStatement, page: () => ShareStatementWidget(amount: Get.parameters['amount'], charge: null, trxId: null,
-            transactionType: utf8.decode(base64Url.decode(Get.parameters['transaction-type']!.replaceAll(' ', '+'))), contactModel: ContactModel.fromJson(jsonDecode(utf8.decode(base64Url.decode(Get.parameters['contact']!)))))),
 
-    GetPage(name: history, page: () => HistoryScreen()),
     GetPage(name: notification, page: () => const NotificationScreen()),
     // GetPage(name: themeAndLanguage, page: () => ThemeAndLanguage()),
     GetPage(name: profile, page: () => const ProfileScreen()),
     GetPage(name: changePinScreen, page: () => const ChangePinScreen()),
-    GetPage(name: sendMoney, page: () => TransactionMoneyScreen(phoneNumber: Get.parameters['phone-number'],fromEdit: Get.parameters['from-edit']== 'edit-number')),
-    GetPage(name: sendMoneyBalanceInput, page: () => TransactionMoneyBalanceInput(transactionType: Get.parameters['transaction-type'])),
-    GetPage(name: sendMoneyConfirmation, page: () => TransactionMoneyConfirmation(inputBalance:double.tryParse(Get.parameters['input-balance']!),transactionType: Get.parameters['transaction-type'])),
 
     GetPage(name: choseLoginOrRegScreen, page: () => const ChoiceScreen()),
     GetPage(name: createAccountScreen, page: () => const CreateAccountScreen()),
-    GetPage(name: verifyScreen, page: () {
-      final String? phoneNumber = Uri.decodeComponent(Get.parameters['phone_number']!)
-          != 'null' ? Uri.decodeComponent(Get.parameters['phone_number']!) : null ;
-      return VerificationScreen(
-        phoneNumber: phoneNumber,
-      );
-    }),
+    GetPage(
+        name: verifyScreen,
+        page: () {
+          final String? phoneNumber = Uri.decodeComponent(Get.parameters['phone_number']!) != 'null' ? Uri.decodeComponent(Get.parameters['phone_number']!) : null;
+          return VerificationScreen(
+            phoneNumber: phoneNumber,
+          );
+        }),
     GetPage(name: selfieScreen, page: () => CameraScreen(fromEditProfile: Get.parameters['page'] == 'edit-profile')),
     GetPage(name: otherInfoScreen, page: () => const InformationScreen()),
-    GetPage(name: pinSetScreen, page: () => PinSetScreen(
-      signUpBody: SignUpBody.fromJson(jsonDecode(utf8.decode(base64Url.decode(Get.parameters['signup']!)))),
-    )),
+    GetPage(
+        name: pinSetScreen,
+        page: () => PinSetScreen(
+              signUpBody: SignUpBody.fromJson(jsonDecode(utf8.decode(base64Url.decode(Get.parameters['signup']!)))),
+            )),
 
-    GetPage(name: welcomeScreen, page: () => WelcomeScreen(
-      countryCode: Get.parameters['country-code']!.replaceAll(' ', '+'),
-      phoneNumber: Get.parameters['phone-number'],
-      password: Get.parameters['password'],
-    )),
-    GetPage(name: loginScreen, page: () => LoginScreen(
-        countryCode: Get.parameters['country-code']!.replaceAll(' ', '+'),
-        phoneNumber: Get.parameters['phone-number']),
+    GetPage(
+        name: welcomeScreen,
+        page: () => WelcomeScreen(
+              countryCode: Get.parameters['country-code']!.replaceAll(' ', '+'),
+              phoneNumber: Get.parameters['phone-number'],
+              password: Get.parameters['password'],
+            )),
+    GetPage(
+      name: loginScreen,
+      page: () => LoginScreen(countryCode: Get.parameters['country-code']!.replaceAll(' ', '+'), phoneNumber: Get.parameters['phone-number']),
     ),
-    GetPage(name: fPhoneNumberScreen, page: () => ForgetPassword(countryCode: Get.parameters['country-code']!.replaceAll(' ', '+'),phoneNumber: Get.parameters['phone-number'],)),
+    GetPage(
+        name: fPhoneNumberScreen,
+        page: () => ForgetPassword(
+              countryCode: Get.parameters['country-code']!.replaceAll(' ', '+'),
+              phoneNumber: Get.parameters['phone-number'],
+            )),
     // GetPage(name: fVerificationScreen, page: () => PhoneVerification(phoneNumber: Get.parameters['phone-number']!.replaceAll(' ', '+'),)),
-    GetPage(name: resetPassScreen, page: () => ResetPasswordScreen(
-      phoneNumber: Get.parameters['phone-number']!.replaceAll(' ', '+'),
-      otp: Get.parameters['otp']!.replaceAll(' ', '+'),
-    )),
+    GetPage(
+        name: resetPassScreen,
+        page: () => ResetPasswordScreen(
+              phoneNumber: Get.parameters['phone-number']!.replaceAll(' ', '+'),
+              otp: Get.parameters['otp']!.replaceAll(' ', '+'),
+            )),
     GetPage(name: choseLanguageScreen, page: () => const ChooseLanguageScreen()),
     GetPage(name: editProfileScreen, page: () => const EditProfileScreen()),
     GetPage(name: faq, page: () => FaqScreen(title: 'faq'.tr)),
@@ -191,9 +195,11 @@ class RouteHelper {
     GetPage(name: aboutUs, page: () => HtmlViewScreen(title: 'about_us'.tr, url: Get.find<SplashController>().configModel!.aboutUs)),
     GetPage(name: privacy, page: () => HtmlViewScreen(title: 'privacy_policy'.tr, url: Get.find<SplashController>().configModel!.privacyPolicy)),
     GetPage(name: support, page: () => const SupportScreen()),
-    GetPage(name: qrCodeDownloadOrShare, page: () => QrCodeDownloadOrShareScreen(qrCode:  utf8.decode(base64Url.decode(Get.parameters['qr-code']!.replaceAll(' ', '+'))),
-        phoneNumber: utf8.decode(base64Url.decode(Get.parameters['phone-number']!.replaceAll(' ', '+'))),)),
-
-    ];
-
+    GetPage(
+        name: qrCodeDownloadOrShare,
+        page: () => QrCodeDownloadOrShareScreen(
+              qrCode: utf8.decode(base64Url.decode(Get.parameters['qr-code']!.replaceAll(' ', '+'))),
+              phoneNumber: utf8.decode(base64Url.decode(Get.parameters['phone-number']!.replaceAll(' ', '+'))),
+            )),
+  ];
 }

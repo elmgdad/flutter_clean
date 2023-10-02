@@ -3,13 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:six_cash/controller/profile_screen_controller.dart';
 import 'package:six_cash/controller/splash_controller.dart';
-import 'package:six_cash/data/model/response/user_info.dart';
 import 'package:six_cash/util/dimensions.dart';
 import 'package:six_cash/util/images.dart';
 import 'package:six_cash/util/styles.dart';
 import 'package:six_cash/view/base/custom_image.dart';
-import 'package:six_cash/view/base/custom_ink_well.dart';
-import 'package:six_cash/view/screens/kyc_verify/kyc_verify_screen.dart';
 import 'package:six_cash/view/screens/profile/widget/bootom_sheet.dart';
 
 import 'profile_shimmer.dart';

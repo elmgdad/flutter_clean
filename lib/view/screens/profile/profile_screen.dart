@@ -17,7 +17,6 @@ import 'package:six_cash/view/screens/profile/widget/menu_item.dart' as widget;
 import 'package:six_cash/view/screens/profile/widget/profile_holder.dart';
 import 'package:six_cash/view/screens/profile/widget/status_menu.dart';
 import 'package:six_cash/view/screens/profile/widget/user_info_widget.dart';
-import 'package:six_cash/view/screens/transaction_limit/transaction_limit_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -30,7 +29,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final splashController = Get.find<SplashController>();
-    List<TransactionTableModel> transactionTableModelList = [];
     // UserInfo? userInfo = Get.find<ProfileController>().userInfo;
 
     return Scaffold(

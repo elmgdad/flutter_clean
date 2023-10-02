@@ -3,7 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:six_cash/data/model/withdraw_model.dart';
+import 'package:six_cash/data/model/extra.dart';
+
 import 'package:six_cash/util/dimensions.dart';
 import 'package:six_cash/util/styles.dart';
 import 'package:six_cash/view/base/custom_text_field.dart';
@@ -18,7 +19,6 @@ class FieldItemView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
         Padding(
           padding: const EdgeInsets.all(2.0),
           child: Row(
@@ -27,68 +27,76 @@ class FieldItemView extends StatelessWidget {
                 methodField!.inputName!.replaceAll('_', ' ').formattedUpperCase(),
                 style: rubikRegular.copyWith(color: Theme.of(context).primaryColor),
               ),
-              const SizedBox(width: Dimensions.paddingSizeExtraSmall,),
-
-              if(methodField!.inputType == 'phone') Text(
-                '*${'must_use_country_code'.tr}',
-                style: rubikRegular.copyWith(color: Theme.of(context).colorScheme.error, fontSize: Dimensions.fontSizeSmall),
+              const SizedBox(
+                width: Dimensions.paddingSizeExtraSmall,
               ),
+              if (methodField!.inputType == 'phone')
+                Text(
+                  '*${'must_use_country_code'.tr}',
+                  style: rubikRegular.copyWith(color: Theme.of(context).colorScheme.error, fontSize: Dimensions.fontSizeSmall),
+                ),
             ],
           ),
         ),
-        const SizedBox(height: 5,),
-
+        const SizedBox(
+          height: 5,
+        ),
         CustomTextField(
           controller: textControllers![methodField!.inputName],
-          hintText:  methodField!.placeHolder,
-          inputType:  _getType(methodField!.inputType),
+          hintText: methodField!.placeHolder,
+          inputType: _getType(methodField!.inputType),
           fillColor: Theme.of(context).cardColor,
           isPassword: methodField!.inputType == 'password',
         ),
-        const SizedBox(height: 5,),
+        const SizedBox(
+          height: 5,
+        ),
       ],
     );
   }
 
   TextInputType _getType(String? type) {
-    switch(type) {
-      case 'number': {
-        return TextInputType.number;
-      }
-      case 'date': {
-        return TextInputType.datetime;
-      }
-      case 'password': {
-        return TextInputType.visiblePassword;
-      }
-      case 'email': {
-        return TextInputType.emailAddress;
-      }
-      case 'phone': {
-        return TextInputType.phone;
-      }
-      default: {
-        return TextInputType.text;
-      }
+    switch (type) {
+      case 'number':
+        {
+          return TextInputType.number;
+        }
+      case 'date':
+        {
+          return TextInputType.datetime;
+        }
+      case 'password':
+        {
+          return TextInputType.visiblePassword;
+        }
+      case 'email':
+        {
+          return TextInputType.emailAddress;
+        }
+      case 'phone':
+        {
+          return TextInputType.phone;
+        }
+      default:
+        {
+          return TextInputType.text;
+        }
     }
   }
 }
 
 extension StringExtension on String {
-  String formattedUpperCase() => replaceAllMapped(
-      RegExp(r'(?<= |-|^).'), (match) => match[0]!.toUpperCase());
+  String formattedUpperCase() => replaceAllMapped(RegExp(r'(?<= |-|^).'), (match) => match[0]!.toUpperCase());
 }
 
 const indexNotFound = -1;
-
 
 class DateInputFormatter extends TextInputFormatter {
   final String _placeholder = '--/----';
   TextEditingValue? _lastNewValue;
 
   @override
-  TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
     if (oldValue.text.isEmpty) {
       oldValue = oldValue.copyWith(
         text: _placeholder,
@@ -120,9 +128,8 @@ class DateInputFormatter extends TextInputFormatter {
 
     int index = _indexOfDifference(newText, oldText);
     if (oldText.length < newText.length) {
-
       String newChar = newText[index];
-      if (index == 2 ) {
+      if (index == 2) {
         index++;
         offset++;
       }
@@ -144,9 +151,7 @@ class DateInputFormatter extends TextInputFormatter {
     return oldValue.copyWith(
       text: resultText,
       selection: TextSelection.collapsed(offset: offset),
-      composing: defaultTargetPlatform == TargetPlatform.iOS
-          ? const TextRange(start: 0, end: 0)
-          : TextRange.empty,
+      composing: defaultTargetPlatform == TargetPlatform.iOS ? const TextRange(start: 0, end: 0) : TextRange.empty,
     );
   }
 
