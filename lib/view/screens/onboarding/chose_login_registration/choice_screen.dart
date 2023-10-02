@@ -59,7 +59,7 @@ class ChoiceScreen extends StatelessWidget {
                               child: Column(
                                 children: [
                                   Text(
-                                    "Splach " + (index + 1).toString(),
+                                    "Splach ${index + 1}",
                                     style: rubikSemiBold.copyWith(
                                       color: Theme.of(context).textTheme.bodyLarge!.color,
                                       fontSize: Dimensions.fontSizeExtraLarge,
